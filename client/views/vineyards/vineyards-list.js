@@ -4,9 +4,8 @@ angular.module('PickYourVine')
 .controller('VineyardsListCtrl', function($scope, $state, Vineyard, $window){
   function findVinyards(){
     if($state.params.payload){
-      console.log('payload', $state.params.payload)
       var payload = $state.params.payload;
-      payload = payload.split(',')
+      payload = payload.split(',');
       var x = payload[0];
       var y = payload[1];
       var dist = payload[2];
@@ -17,13 +16,12 @@ angular.module('PickYourVine')
       console.log('list', geoInfo);
       Vineyard.findGeo(geoInfo);
     }
-  Vineyard.find()
+    Vineyard.find()
   .then(function(response){
     $scope.vineyards = response.data;
-    console.log('didnt work');
   });
-}
-findVinyards();
+  }
+  findVinyards();
   $scope.editVineyard = function(vineyard){
     $state.go('vineyards.edit', {vineyardId: vineyard._id});
   };

@@ -24,9 +24,9 @@ angular.module('PickYourVine')
   Vineyard.edit = function(vineyard, vineyardId){
     return $http.put(nodeUrl + '/vineyards/' + vineyardId, vineyard);
   };
-  // Vineyard.findGeo = function(geoInfo){
-  //   // console.log('geoinfo', geoInfo);
-  //   return $http.get(nodeUrl + '/vineyards/' + geoInfo);
-  // };
+  Vineyard.findGeo = function(geoInfo){
+    console.log('geoinfo', geoInfo);
+    return $http.get(nodeUrl + '/vineyards/' + geoInfo);
+  };
   return Vineyard;
 });

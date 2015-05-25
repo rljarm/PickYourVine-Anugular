@@ -11,6 +11,19 @@
               h5 {{vineyard.addrString}}
               h5 {{vineyard.phone}}
               h5 {{vineyard.website}}
+  .col-xs-4
+    ins.bookingaff(data-aid='830134', data-target_aid='830128', data-prod='nsb', data-width='265', data-height='360')
+      // Anything inside will go away once widget is loaded.
+      a(href='//www.booking.com?aid=830128') Booking.com
+    script(type='text/javascript').
+      (function(d, sc, u) {
+      var s = d.createElement(sc), p = d.getElementsByTagName(sc)[0];
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = u + '?v=' + (+new Date());
+      p.parentNode.insertBefore(s,p);
+      })(document, 'script', '//aff.bstatic.com/static/affiliate_base/js/flexiproduct.js');
+
 .row
   .col-xs-4
     .panel
@@ -21,3 +34,4 @@
             .panel-body
               h5 {{yelp.rating}}
               img(ng-src='{{yelp.rating_img_url}}')
+  
