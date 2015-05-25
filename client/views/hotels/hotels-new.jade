@@ -1,0 +1,35 @@
+h3.text-center(ng-hide='isEdit') NEW Hotel
+h3.text-center(ng-show='isEdit') EDIT Hotel
+.row
+  .col-xs-12.col-sm-3
+    .form-group
+      label(for='name') Hotel Name
+      input.form-control(type='text', name='name', ng-model='hotel.name')
+    .form-group
+      label(for='region') Region
+      select.form-control(name='region', ng-model='hotel.region')
+        option(value='verde valley') Verde Valley
+        option(value='sonoita') Sonoita
+        option(value='willcox') Willcox-SouthEastern Arizona
+    .form-group
+      label(for='street') Street Address
+      input.form-control(type='text', name='street', ng-model='hotel.street')
+    .form-group
+      label(for='city') City/Town
+      input.form-control(type='text', name='city', ng-model='hotel.city')
+    .form-group
+      label(for='state') State
+      input.form-control(type='text', name='state', ng-model='hotel.state')
+    .form-group
+      label(for='zip') Zip Code
+      input.form-control(type='number', name='zip', ng-model='hotel.zip')
+    .form-group
+      label(for='phone') Phone
+      input.form-control(type='tel', name='phone', ng-model='hotel.phone')
+    .form-group
+      label(for='website') Website
+      input.form-control(type='url', name='website', ng-model='hotel.website')
+    .form-group(ng-hide='isEdit')
+      button.btn.btn-success.login#createUser(ng-click='addHotel(hotel)') Create New Hotel
+    .form-group(ng-show='isEdit')
+      button.btn.btn-success.login#createUser(ng-click='edit(hotel)') Save Hotel

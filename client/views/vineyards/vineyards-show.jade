@@ -1,0 +1,23 @@
+.row
+  .col-xs-4
+    .panel
+      .panel-default
+        .panel-heading
+          .panel-title
+            h3 {{vineyard.name}}
+            h4(ng-if='') Distance: {{}}
+            .panel-body
+              h4 {{vineyard.region}}
+              h5 {{vineyard.addrString}}
+              h5 {{vineyard.phone}}
+              h5 {{vineyard.website}}
+.row
+  .col-xs-4
+    .panel
+      .panel-default
+        .panel-heading
+          .panel-title
+          h3 Yelp Rating
+            .panel-body
+              h5 {{yelp.rating}}
+              img(ng-src='{{yelp.rating_img_url}}')

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('PickYourVine')
 .factory('User', function($rootScope, $http, nodeUrl){
   function User(){
   }

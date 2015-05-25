@@ -8,12 +8,14 @@ nav.navbar.navbar-inverse(ng-controller='NavCtrl')
         span.icon-bar
       a.navbar-brand(href='/') Pick Your Vine
     #navbar.collapse.navbar-collapse
+      form.navbar-form.navbar-left(role='search')
+        .form-group
+          input.form-control(type='text', placeholder='Search Vineyards')
+        button.btn.btn-default(type='submit') Search
       ul.nav.navbar-nav.navbar-right(ng-show='activeUser')
         li: a(ui-sref='home'): i.fa.fa.fa-home &nbsp; Home
         li: a(ui-sref='vineyards.new'): i.fa.fa.fa-home &nbsp; New Vineyard
-        li: a(ui-sref='vineyards.list'): i.fa.fa.fa-home &nbsp; Vineyards
         li: a(ui-sref='hotels.new'): i.fa.fa.fa-home &nbsp; New Hotel
-        li: a(ui-sref='hotels.list'): i.fa.fa.fa-home &nbsp; Hotels
         li: a(ui-sref='about'): i.fa.fa.fa-info &nbsp; About
         li: a(ui-sref='contact'): i.fa.fa.fa-phone &nbsp; Contact
         li: button.btn.btn-danger.btn-lg(ng-click='logout()'): i.fa.fa-sign-out &nbsp; {{displayName}}

@@ -1,16 +1,10 @@
 'use strict';
 
 angular.module('PickYourVine')
-.controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User, Map){
+.controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User){
   function goHome(){
     $state.go('home');
   }
-  $scope.search = function(query){
-    console.log('clicked', query);
-    Map.geocode(query, function(reply){
-      console.log(reply);
-    });
-  };
 
   function getDisplayName(data){
     switch(data.provider){

@@ -1,11 +1,11 @@
 doctype html
-html(lang='en', ng-app='poseidon')
+html(lang='en', ng-app='PickYourVine')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Poseidon
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/superhero/bootstrap.min.css')
+    title PickYourVine
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/spacelab/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='/vendor/sweetalert/dist/sweetalert.css')
     link(rel='stylesheet', href=isProd ? '/index.min.css' : '/index.css')
@@ -21,7 +21,9 @@ html(lang='en', ng-app='poseidon')
     script(src='/vendor/bootstrap/dist/js/bootstrap.min.js')
     script(src='/vendor/lodash/lodash.min.js')
     script(src='/vendor/firebase/firebase.js')
+    script(src='/vendor/oauth-signature/dist/oauth-signature.min.js')
     script(src='/vendor/sweetalert/dist/sweetalert.min.js')
+    script(type='text/javascript' src='http://maps.googleapis.com/maps/api/js?key=AIzaSyACQMM7ih7EgHAYFKf1GpkzNohP_44Zejc')
     script(src='/vendor/angular/angular.min.js')
     script(src='/vendor/angularfire/dist/angularfire.min.js')
     script(src='/vendor/angular-ui-router/release/angular-ui-router.min.js')

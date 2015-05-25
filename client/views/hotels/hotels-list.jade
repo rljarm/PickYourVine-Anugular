@@ -1,0 +1,27 @@
+.container#list
+  h3.text-center Hotels
+  .row
+    .col-sm-12
+      .table-responsive
+        table.table.table-hover
+          thead
+            tr
+              th(ng-click='sort("firstName")') Name
+              th(ng-click='sort("company")') Region
+              th(ng-if='', ng-click='sort("role")') Distance
+              th Edit
+              th Delete
+          tbody
+            tr(ng-repeat='hotel in hotels | orderBy : sortColumn : sortReverse')
+              td(ng-click='hotelGo(hotel)') {{hotel.name}}
+              td(ng-click='hotelGo(hotel)') {{hotel.region}}
+              td(ng-click='hotelGo(hotel)', ng-if='') {{hotel.distance}}
+              td: button.btn.btn-sm.btn-warning(ng-click='editHotel(hotel)') Edit
+              td: button.btn.btn-sm.btn-danger(ng-click='deleteHotel(hotel)') Delete
+              
+  .row
+    .col-xs-1
+      button.btn.btn-info(ng-show='moveBack', ng-click='changePage("prev")') Prev
+    .col-xs-10
+    .col-xs-1
+      button.btn.btn-info(ng-show='moveForward', ng-click='changePage("next")') Next

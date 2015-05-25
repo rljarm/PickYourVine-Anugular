@@ -1,0 +1,29 @@
+.row
+  .col-xs-12.col-sm-4.col-sm-offset-4
+    h3 Welecome to Pick Your Vine.
+.row
+  .col-xs-12.col-sm-4
+    h4 Vineyard search
+    .form-group
+      label(for='distance') Distance
+      select(name='distance', ng-model='distance')
+        option(value='5') 5 Miles
+        option(value='10') 10 Miles
+        option(value='15') 15 Miles
+        option(value='20') 20 Miles
+        option(value='25') 25 Miles
+        option(value='30') 30 Miles
+        option(value='35') 35 Miles
+        option(value='40') 40 Miles
+        option(value='45') 45 Miles
+        option(value='50') 50 Miles
+      label(for='city') Near a City/Address
+      input.form-control(type='text', name='city', ng-model='city')
+    .form-group
+      label(for='region')
+      select(ng-model='region')
+        option(value='verde valley') Verde Valley
+        option(value='sonoita') Sonoita
+        option(value='willcox') Willcox-SouthEastern Arizona  
+    .form-group
+      button.btn.btn-info(ng-click='search(city, distance)') Search

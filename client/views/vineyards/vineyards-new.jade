@@ -1,0 +1,308 @@
+H1 New Vineyard
+.row
+  .col-xs-12.col-sm-3
+    .form-group
+      label(for='name') Vineyard Name
+      input.form-control(type='text', name='name', ng-model='vineyard.name')
+    .form-group
+      label(for='name') Vineyard Region
+      select.form-control(name='region', ng-model='vineyard.region')
+        option(value='verde valley') Verde Valley
+        option(value='sonoita') Sonoita
+        option(value='willcox') Willcox-SouthEastern Arizona
+    .form-group
+      label(for='street') Street Address
+      input.form-control(type='text', name='street', ng-model='vineyard.street')
+    .form-group
+      label(for='city') City/Town
+      input.form-control(type='text', name='city', ng-model='vineyard.city')
+    .form-group
+      label(for='state') State
+      input.form-control(type='text', name='state', ng-model='vineyard.state')
+    .form-group
+      label(for='zip') Zip Code
+      input.form-control(type='number', name='zip', ng-model='vineyard.zip')
+    .form-group
+      label(for='phone') Phone
+      input.form-control(type='tel', name='phone', ng-model='vineyard.phone')
+    .form-group
+      label(for='phone') Wines
+      textarea.form-control(name='wines', ng-model='vineyard.wines')
+    .form-group
+      label(for='website') Website
+      input.form-control(type='url', name='website', ng-model='vineyard.website')
+    .form-group
+      button.btn.btn-info(ng-click='addVineyard(vineyard)') Add Vineyard
+  //- .col-xs-12.col-sm-3
+  //-   .form-group
+  //-     label(for='hours1') Hours Start Day 1
+  //-     select.form-control(name='hours1', ng-model='vineyard.hours1')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='hoursto1') Hours End Day 1
+  //-     select.form-control(name='hoursto1', ng-model='vineyard.hoursto1')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='open1') Open 1
+  //-     select.form-control(name='open1', ng-model='vineyard.open1')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+  //-     label(for='close1') Close 1
+  //-     select.form-control(name='close1', ng-model='vineyard.close1')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+  //- .col-xs-12.col-sm-3
+  //-   .form-group
+  //-     label(for='hours2') Hours Start Day 2
+  //-     select.form-control(name='hours2', ng-model='vineyard.hours2')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='hoursto2') Hours End Day 2
+  //-     select.form-control(name='hoursto2', ng-model='vineyard.hoursto2')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='open2') Open 2
+  //-     select.form-control(name='open2', ng-model='vineyard.open2')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+  //-     label(for='close2') Close 2
+  //-     select.form-control(name='close2', ng-model='vineyard.close2')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+  //- .col-xs-12.col-sm-3
+  //-   .form-group
+  //-     label(for='hours3') Hours Start Day 3
+  //-     select.form-control(name='hours3', ng-model='vineyard.hours3')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='hoursto3') Hours End Day 3
+  //-     select.form-control(name='hoursto3', ng-model='vineyard.hoursto3')
+  //-       option(value='monday') Monday
+  //-       option(value='tuesday') Tuesday
+  //-       option(value='wednesday') Wednesday
+  //-       option(value='thursday') Thursday
+  //-       option(value='friday') Friday
+  //-       option(value='saturday') Saturday
+  //-       option(value='sunday') Sunday
+  //-     label(for='open3') Open 3
+  //-     select.form-control(name='open3', ng-model='vineyard.open3')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+  //-     label(for='close3') Close 3
+  //-     select.form-control(name='close3', ng-model='vineyard.close3')
+  //-       option(value='10.00') 10AM
+  //-       option(value='10.50') 10:30AM
+  //-       option(value='11.00')  11AM
+  //-       option(value='11.50') 11:30AM
+  //-       option(value='12.00')  12PM
+  //-       option(value='12.50') 12:30PM
+  //-       option(value='13.00') 1PM
+  //-       option(value='13.50') 1:30PM
+  //-       option(value='14.00') 2PM
+  //-       option(value='14.50') 2:30PM
+  //-       option(value='15.00') 3PM
+  //-       option(value='15.50') 3:30PM
+  //-       option(value='16.00') 4PM
+  //-       option(value='16.50') 4:30PM
+  //-       option(value='17.00') 5PM
+  //-       option(value='17.50') 5:30PM
+  //-       option(value='18.00') 6PM
+  //-       option(value='18.50') 6:30PM
+  //-       option(value='19.00') 7PM
+  //-       option(value='19.50') 7:30PM
+  //-       option(value='20.00') 8PM
+  //-       option(value='20.50') 8:30PM
+  //-       option(value='21.00') 9PM
+  //-       option(value='21.50') 9:30PM
+  //-       option(value='22.00') 10PM
+  //-       option(value='22.50') 10:30PM
+  //-       option(value='23.00') 11PM
+  //-       option(value='23.50') 11:30PM
+  //-       option(value='24.00') 12AM
+  //-       option(value='00.50') 12:30AM
+  //-       option(value='01.00') 1AM
+  //-       option(value='01.50') 1:30AM
+  //-       option(value='02.00') 2AM
+        
+        
+    
