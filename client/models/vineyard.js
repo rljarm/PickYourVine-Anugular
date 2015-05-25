@@ -28,5 +28,8 @@ angular.module('PickYourVine')
     console.log('geoinfo', geoInfo);
     return $http.get(nodeUrl + '/vineyards/' + geoInfo);
   };
+  Vineyard.getYelp = function(address, name){
+    return $http.get(nodeUrl + '/vineyards/yelp/' + address + '/' + name);
+  };
   return Vineyard;
 });
