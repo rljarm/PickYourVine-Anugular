@@ -25,11 +25,18 @@ angular.module('PickYourVine')
     return $http.put(nodeUrl + '/vineyards/' + vineyardId, vineyard);
   };
   Vineyard.findGeo = function(geoInfo){
-    console.log('geoinfo', geoInfo);
-    return $http.get(nodeUrl + '/vineyards/' + geoInfo);
+    var loc = geoInfo.loc;
+    var x = loc[0];
+    var y = loc[1];
+    var dist = geoInfo.dist;
+    console.log('geoinfo', geoInfo, loc, dist);
+    return $http.get(nodeUrl + '/vineyards/geosearch/' + x + '/' + y + '/' + dist);
   };
   Vineyard.getYelp = function(address, name){
     return $http.get(nodeUrl + '/vineyards/yelp/' + address + '/' + name);
+  };
+  Vineyard.regionSearch = function(region){
+    return $http.get(nodeUrl + '/vineyards/region/' + region);
   };
   return Vineyard;
 });

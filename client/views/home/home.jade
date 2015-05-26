@@ -5,7 +5,7 @@
   .col-xs-12.col-sm-4
     h4 Vineyard search
     .form-group
-      label(for='distance') Distance
+      label(for='distance') Search by Distance
       select.form-control(name='distance', ng-model='distance')
         option(value='5') 5 Miles
         option(value='10') 10 Miles
@@ -20,10 +20,12 @@
       label(for='city') Near a City/Address
       input.form-control(type='text', name='city', ng-model='city')
     .form-group
-      label(for='region')
+      button.btn.btn-info(ng-click='search(city, distance)') Search
+    .form-group
+      label(for='region') Search by Region
       select.form-control(name="region")(ng-model='region') Region
         option(value='verde valley') Verde Valley
         option(value='sonoita') Sonoita
         option(value='willcox') Willcox-SouthEastern Arizona
     .form-group
-      button.btn.btn-info(ng-click='search(city, distance)') Search
+      button.btn.btn-info(ng-click='searchRegion(region)') Search
