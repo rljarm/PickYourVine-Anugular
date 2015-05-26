@@ -2,30 +2,31 @@
 
 angular.module('PickYourVine')
 .controller('VineyardsListCtrl', function($scope, $state, Vineyard, $window){
-  if($state.params.payload.length > 10){
-    var payload = $state.params.payload;
-    payload = payload.split(',');
-    var x = payload[0] * 1;
-    var y = payload[1] * 1;
-    var dist = payload[2] * 1;
-    var geoInfo = {
+  var payload = $state.params.payload;
+  payload = payload.split(',');
+  var x = payload[0] * 1;
+  var y = payload[1] * 1;
+  var dist = payload[2] * 1;
+  var geoInfo = {
       loc: [x, y],
       dist: dist
     };
+  if(dist){
     console.log('list', geoInfo);
     Vineyard.findGeo(geoInfo)
     .then(function(data){
       console.log(data);
       $scope.vineyards = data.data;
+      dist = 0;
     });
-  } else if($state.params.payload.length < 10 && $state.params.payload.length > 1){
+  } else if($state.params.region.length < 20 && $state.params.region.length > 2){
     console.log('region', $state.params);
-    Vineyard.regionSearch($state.params.payload)
+    Vineyard.regionSearch($state.params.region)
     .then(function(reply){
       console.log("dsfsdf", reply);
       $scope.vineyards = reply.data;
     });
-  } else{
+  } else if(dist === 0 && $state.params.region.length === 24){
     Vineyard.find()
     .then(function(response){
       $scope.vineyards = response.data;

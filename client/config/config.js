@@ -12,13 +12,13 @@ angular.module('PickYourVine')
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('vineyards', {url: '/vineyards', templateUrl: '/views/vineyards/vineyards.html', abstract: true})
-  .state('vineyards.list', {url: '/{payload}', templateUrl: '/views/vineyards/vineyards-list.html', controller: 'VineyardsListCtrl'})
+  .state('vineyards.list', {url: '/{payload}/{region}', templateUrl: '/views/vineyards/vineyards-list.html', controller: 'VineyardsListCtrl'})
   .state('vineyards.new', {url: '/new', templateUrl: '/views/vineyards/vineyards-new.html', controller: 'VineyardsNewCtrl'})
   .state('vineyards.edit', {url: '/edit/{vineyardId}', templateUrl: '/views/vineyards/vineyards-new.html', controller: 'VineyardsNewCtrl'})
-  .state('vineyards.show', {url: '/show/{vineyardId}', templateUrl: '/views/vineyards/vineyards-show.html', controller: 'VineyardsShowCtrl'})
+  .state('vineyards.show', {url: '/{vineyardId}', templateUrl: '/views/vineyards/vineyards-show.html', controller: 'VineyardsShowCtrl'})
   .state('hotels', {url: '/hotels', templateUrl: '/views/hotels/hotels.html', abstract: true})
   .state('hotels.list', {url: '/', templateUrl: '/views/hotels/hotels-list.html', controller: 'HotelsListCtrl'})
   .state('hotels.new', {url: '/new', templateUrl: '/views/hotels/hotels-new.html', controller: 'HotelsNewCtrl'})
   .state('hotels.edit', {url: '/edit/{hotelId}', templateUrl: '/views/hotels/hotels-new.html', controller: 'HotelsNewCtrl'})
-  .state('hotels.show', {url: '/show/{hotelId}', templateUrl: '/views/hotels/hotels-show.html', controller: 'HotelsShowCtrl'});
+  .state('hotels.show', {url: '/{hotelId}', templateUrl: '/views/hotels/hotels-show.html', controller: 'HotelsShowCtrl'});
 });

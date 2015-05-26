@@ -10,7 +10,7 @@ angular.module('PickYourVine')
   }
 
   $scope.searchRegion = function(region){
-    $state.go('vineyards.list', {payload: region});
+    $state.go('vineyards.list', {region: region});
   };
 
   $scope.search = function(city, distance){
