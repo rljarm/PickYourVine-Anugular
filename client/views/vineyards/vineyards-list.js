@@ -2,26 +2,36 @@
 
 angular.module('PickYourVine')
 .controller('VineyardsListCtrl', function($scope, $state, Vineyard, $window){
-  function findVinyards(){
-    if($state.params.payload){
-      var payload = $state.params.payload;
-      payload = payload.split(',');
-      var x = payload[0];
-      var y = payload[1];
-      var dist = payload[2];
-      var geoInfo = {
-        loc: [x, y],
-        dist: dist
-      };
-      console.log('list', geoInfo);
-      Vineyard.findGeo(geoInfo);
-    }
+  if($state.params.payload.length > 10){
+    var payload = $state.params.payload;
+    payload = payload.split(',');
+    var x = payload[0] * 1;
+    var y = payload[1] * 1;
+    var dist = payload[2] * 1;
+    var geoInfo = {
+      loc: [x, y],
+      dist: dist
+    };
+    console.log('list', geoInfo);
+    Vineyard.findGeo(geoInfo)
+    .then(function(data){
+      console.log(data);
+      $scope.vineyards = data.data;
+    });
+  } else if($state.params.payload.length < 10 && $state.params.payload.length > 1){
+    console.log('region', $state.params);
+    Vineyard.regionSearch($state.params.payload)
+    .then(function(reply){
+      console.log("dsfsdf", reply);
+      $scope.vineyards = reply.data;
+    });
+  } else{
     Vineyard.find()
-  .then(function(response){
-    $scope.vineyards = response.data;
-  });
+    .then(function(response){
+      $scope.vineyards = response.data;
+    });
   }
-  findVinyards();
+  // findVinyards();
   $scope.editVineyard = function(vineyard){
     $state.go('vineyards.edit', {vineyardId: vineyard._id});
   };

@@ -14,7 +14,7 @@
               h4 Phone Number
               h5 {{vineyard.phone}}
               h4(ng-if='vineyard.website')
-              h5 {{vineyard.website}}
+              h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
   .col-xs-12.col-sm-4
     .panel
       .panel-default
