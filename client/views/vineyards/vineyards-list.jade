@@ -1,76 +1,77 @@
-.container#list
-  .row
-    .col-xs-12.col-sm-4.col-sm-offset-4
-      h3 Welecome to Pick Your Vine.
-      button.btn.btn-info(ng-if='areaSearch === false', ng-click='toggleSearch()') Search Region/Distance
-      &nbsp;
-  .row
-    .col-xs-12.col-sm-3(ng-if='areaSearch === true')
-      h4 Vineyard search
-      .form-group
-        label(for='city') Search Near City/Address
-        input.form-control(type='text', name='city', ng-model='city', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
-        label(for='distance') Maximum Distance
-        select.form-control(name='distance', ng-model='distance', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
-          option(value='5') 5 Miles
-          option(value='10') 10 Miles
-          option(value='15') 15 Miles
-          option(value='20') 20 Miles
-          option(value='25') 25 Miles
-          option(value='30') 30 Miles
-          option(value='35') 35 Miles
-          option(value='40') 40 Miles
-          option(value='45') 45 Miles
-          option(value='50') 50 Miles
-      .form-group
-        button.btn.btn-info(ng-click='search(city, distance)') Search
-      .form-group
-        label(for='region') Search by Region
-        select.form-control(name="region")(ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null') Region
-          option(value='verde valley') Verde Valley
-          option(value='sonoita') Sonoita
-          option(value='willcox') Willcox-SouthEastern Arizona
-      .form-group
-        button.btn.btn-info(ng-click='searchRegion(region)') Search
+.row
+  .col-xs-12.col-sm-4.col-sm-offset-4
+    h3 Welecome to Pick Your Vine.
+    button.btn.btn-info(ng-if='areaSearch === false', ng-click='toggleSearch()') Search Region/Distance
+    &nbsp;
+.row
+  .col-xs-12.col-sm-3(ng-if='areaSearch === true')
+    h4 Vineyard search
+    .form-group
+      label(for='city') Search Near City/Address
+      input.form-control(type='text', name='city', ng-model='city', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
+      label(for='distance') Maximum Distance
+      select.form-control(name='distance', ng-model='distance', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
+        option(value='5') 5 Miles
+        option(value='10') 10 Miles
+        option(value='15') 15 Miles
+        option(value='20') 20 Miles
+        option(value='25') 25 Miles
+        option(value='30') 30 Miles
+        option(value='35') 35 Miles
+        option(value='40') 40 Miles
+        option(value='45') 45 Miles
+        option(value='50') 50 Miles
+    .form-group
+      button.btn.btn-info(ng-click='search(city, distance)') Search
+    .form-group
+      label(for='region') Search by Region
+      select.form-control(name="region")(ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null') Region
+        option(value='verde valley') Verde Valley
+        option(value='sonoita') Sonoita
+        option(value='willcox') Willcox-SouthEastern Arizona
+    .form-group
+      button.btn.btn-info(ng-click='searchRegion(region)') Search
 
-  .row
-    .col-sm-12.col-sm-3
-      .table-responsive
-        table.table.table-hover(ng-if='vineyards !== undefined')
-          thead
-            tr
-              th(ng-click='sort("firstName")') Name
-              th(ng-click='sort("company")') Region
-              th(ng-if='', ng-click='sort("role")') Distance
-              th Edit
-              th Delete
-          tbody
-            tr(ng-repeat='vineyard in vineyards track by $index | orderBy : sortColumn : sortReverse', ng-mouseenter='toggleBounce(vineyard)', ng-mouseleave='toggleBounce(vineyard)')
-              td(ng-click='vineyardGo($index)') {{vineyard.name}}
-              td(ng-click='vineyardGo($index)') {{vineyard.region}}
-              td(ng-click='vineyardGo($index)', ng-if='') {{vineyard.distance}}
-              td: button.btn.btn-sm.btn-warning(ng-click='editVineyard(vineyard)') Edit
-              td: button.btn.btn-sm.btn-danger(ng-click='deleteVineyard(vineyard)') Delete
-    .col-sm-12.col-sm-8(ng-hide='mapHide')
-      &nbsp;
-      #map
-    .col-xs-12.col-sm-3(ng-if='mapHide === true')
-      .panel
-        .panel-default
-          .panel-heading
-            .panel-title
-              h3 {{vineyard.name}}
-              h4(ng-if='') Distance: {{}}
-              .panel-body
-                h4 Region:
-                h5 {{vineyard.region | uppercase}}
-                h4 Address:
-                h5 {{vineyard.addrString}}
-                h4 Phone Number
-                h5 {{vineyard.phone}}
-                h4(ng-if='vineyard.website')
-                h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
-  .col-xs-12.col-sm-2(ng-if='mapHide === true')
+.row
+  .col-sm-12.col-sm-3
+    .table-responsive
+      table.table.table-hover(ng-if='vineyards !== undefined')
+        thead
+          tr
+            th(ng-click='sort("firstName")') Name
+            th(ng-click='sort("company")') Region
+            th(ng-if='', ng-click='sort("role")') Distance
+            th Edit
+            th Delete
+        tbody
+          tr(ng-repeat='vineyard in vineyards track by $index | orderBy : sortColumn : sortReverse', ng-mouseenter='toggleBounce(vineyard)', ng-mouseleave='toggleBounce(vineyard)')
+            td(ng-click='vineyardGo($index)') {{vineyard.name}}
+            td(ng-click='vineyardGo($index)') {{vineyard.region}}
+            td(ng-click='vineyardGo($index)', ng-if='') {{vineyard.distance}}
+            td: button.btn.btn-sm.btn-warning(ng-click='editVineyard(vineyard)') Edit
+            td: button.btn.btn-sm.btn-danger(ng-click='deleteVineyard(vineyard)') Delete
+  .col-sm-12.col-sm-8(ng-hide='mapHide')
+    &nbsp;
+    #map
+  .col-xs-12.col-sm-3(ng-show='mapHide')
+    &nbsp;
+    .panel
+      .panel-default
+        .panel-heading
+          .panel-title
+            h3 {{vineyard.name}}
+            h4(ng-if='') Distance: {{}}
+            .panel-body
+              h4 Region:
+              h5 {{vineyard.region | uppercase}}
+              h4 Address:
+              h5 {{vineyard.addrString}}
+              h4 Phone Number
+              h5 {{vineyard.phone}}
+              h4(ng-if='vineyard.website')
+              h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
+  .col-xs-12.col-sm-3(ng-show='mapHide')
+    &nbsp;
     .panel
       .panel-default
         .panel-heading
@@ -83,7 +84,8 @@
               h4 Reviews:
               h5 {{yelp.snippet_text}}
               p: a(href='{{yelp.url}}') See Yelp For More Reviews
-  .col-xs-12.col-sm-4(ng-if='mapHide === true')
+  .col-xs-12.col-sm-2(ng-show='mapHide')
+    &nbsp;
     ins.bookingaff(data-aid='830134', data-target_aid='830128', data-prod='nsb', data-width='265', data-height='360')
       // Anything inside will go away once widget is loaded.
       a(href='//www.booking.com?aid=830128') Booking.com
@@ -95,7 +97,9 @@
       s.src = u + '?v=' + (+new Date());
       p.parentNode.insertBefore(s,p);
       })(document, 'script', '//aff.bstatic.com/static/affiliate_base/js/flexiproduct.js');
-      
+  .row
+    .col-xs-12.col-sm-4
+      #detailMap(ng-show='mapHide', events="map.events")
   .row
     .col-xs-1
       button.btn.btn-info(ng-show='moveBack', ng-click='changePage("prev")') Prev

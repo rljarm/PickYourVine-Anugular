@@ -5,7 +5,7 @@ angular.module('PickYourVine')
   $urlRouterProvider.otherwise('/vineyard');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/home/home.html', controller: 'HomeCtrl'})
+  .state('home', {url: '/', templateUrl: '/views/vineyards/vineyards-list.html', controller: 'VineyardsListCtrl'})
   .state('about', {url: '/about', templateUrl: '/views/general/about.html'})
   .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})

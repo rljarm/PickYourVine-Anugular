@@ -79,5 +79,14 @@ angular.module('PickYourVine')
     $scope.vineyard = $scope.vineyards[index];
     console.log($scope.vineyard);
     $scope.mapHide = true;
+    var x = $scope.vineyard.geo[0];
+    var y = $scope.vineyard.geo[1];
+    map = Map.create('#detailMap', y, x, 13);
+    addMarkers();
+    Vineyard.getYelp($scope.vineyard.addrString, $scope.vineyard.name)
+    .then(function(reply){
+      console.log('yelp', reply);
+      $scope.yelp = reply.data.businesses[0];
+    });
   };
 });
