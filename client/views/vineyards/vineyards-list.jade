@@ -1,7 +1,7 @@
 .container#list
   h3.text-center Vineyards
   .row
-    .col-sm-12
+    .col-sm-12.col-sm-4
       .table-responsive
         table.table.table-hover
           thead
@@ -12,13 +12,14 @@
               th Edit
               th Delete
           tbody
-            tr(ng-repeat='vineyard in vineyards | orderBy : sortColumn : sortReverse')
+            tr(ng-repeat='vineyard in vineyards | orderBy : sortColumn : sortReverse', ng-mouseenter='toggleBounce(vineyard)', ng-mouseleave='toggleBounce(vineyard)')
               td(ng-click='vineyardGo(vineyard)') {{vineyard.name}}
               td(ng-click='vineyardGo(vineyard)') {{vineyard.region}}
               td(ng-click='vineyardGo(vineyard)', ng-if='') {{vineyard.distance}}
               td: button.btn.btn-sm.btn-warning(ng-click='editVineyard(vineyard)') Edit
               td: button.btn.btn-sm.btn-danger(ng-click='deleteVineyard(vineyard)') Delete
-              
+    .col-sm-12.col-sm-8
+      #map
   .row
     .col-xs-1
       button.btn.btn-info(ng-show='moveBack', ng-click='changePage("prev")') Prev

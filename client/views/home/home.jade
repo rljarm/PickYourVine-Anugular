@@ -5,7 +5,9 @@
   .col-xs-12.col-sm-4
     h4 Vineyard search
     .form-group
-      label(for='distance') Search by Distance
+      label(for='city') Search Near City/Address
+      input.form-control(type='text', name='city', ng-model='city')
+      label(for='distance') Maximum Distance
       select.form-control(name='distance', ng-model='distance')
         option(value='5') 5 Miles
         option(value='10') 10 Miles
@@ -17,8 +19,6 @@
         option(value='40') 40 Miles
         option(value='45') 45 Miles
         option(value='50') 50 Miles
-      label(for='city') Near a City/Address
-      input.form-control(type='text', name='city', ng-model='city')
     .form-group
       button.btn.btn-info(ng-click='search(city, distance)') Search
     .form-group

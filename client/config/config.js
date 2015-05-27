@@ -19,6 +19,6 @@ angular.module('PickYourVine')
   .state('hotels', {url: '/hotels', templateUrl: '/views/hotels/hotels.html', abstract: true})
   .state('hotels.list', {url: '/', templateUrl: '/views/hotels/hotels-list.html', controller: 'HotelsListCtrl'})
   .state('hotels.new', {url: '/new', templateUrl: '/views/hotels/hotels-new.html', controller: 'HotelsNewCtrl'})
-  .state('hotels.edit', {url: '/edit/{hotelId}', templateUrl: '/views/hotels/hotels-new.html', controller: 'HotelsNewCtrl'})
-  .state('hotels.show', {url: '/{hotelId}', templateUrl: '/views/hotels/hotels-show.html', controller: 'HotelsShowCtrl'});
+  .state('hotels.edit', {url: '/editHotel/{hotelId}', templateUrl: '/views/hotels/hotels-new.html', controller: 'HotelsNewCtrl'})
+  .state('hotels.show', {url: '/show/{hotelId}', templateUrl: '/views/hotels/hotels-show.html', controller: 'HotelsShowCtrl'});
 });
