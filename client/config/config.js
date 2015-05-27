@@ -2,7 +2,7 @@
 
 angular.module('PickYourVine')
 .config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/vineyard');
 
   $stateProvider
   .state('home', {url: '/', templateUrl: '/views/home/home.html', controller: 'HomeCtrl'})
@@ -12,7 +12,7 @@ angular.module('PickYourVine')
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('vineyards', {url: '/vineyards', templateUrl: '/views/vineyards/vineyards.html', abstract: true})
-  .state('vineyards.list', {url: '/{payload}/{region}', templateUrl: '/views/vineyards/vineyards-list.html', controller: 'VineyardsListCtrl'})
+  .state('vineyards.list', {url: '/vineyard', templateUrl: '/views/vineyards/vineyards-list.html', controller: 'VineyardsListCtrl'})
   .state('vineyards.new', {url: '/new', templateUrl: '/views/vineyards/vineyards-new.html', controller: 'VineyardsNewCtrl'})
   .state('vineyards.edit', {url: '/edit/{vineyardId}', templateUrl: '/views/vineyards/vineyards-new.html', controller: 'VineyardsNewCtrl'})
   .state('vineyards.show', {url: '/{vineyardId}', templateUrl: '/views/vineyards/vineyards-show.html', controller: 'VineyardsShowCtrl'})
