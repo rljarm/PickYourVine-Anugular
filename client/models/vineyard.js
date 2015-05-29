@@ -24,12 +24,7 @@ angular.module('PickYourVine')
   Vineyard.edit = function(vineyard, vineyardId){
     return $http.put(nodeUrl + '/vineyards/' + vineyardId, vineyard);
   };
-  Vineyard.findGeo = function(geoInfo){
-    var loc = geoInfo.loc;
-    var x = loc[0];
-    var y = loc[1];
-    var dist = geoInfo.dist;
-    console.log('geoinfo', geoInfo, loc, dist);
+  Vineyard.findGeo = function(x, y, dist){
     return $http.get(nodeUrl + '/vineyards/geosearch/' + x + '/' + y + '/' + dist);
   };
   Vineyard.getYelp = function(address, name){
