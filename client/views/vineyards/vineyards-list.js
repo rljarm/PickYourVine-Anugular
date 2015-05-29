@@ -9,26 +9,45 @@ angular.module('PickYourVine')
   $scope.searchRegion = function(region){
     Vineyard.regionSearch(region)
     .then(function(reply){
-      $scope.vineyards = reply.data;
-      var lat;
-      var lng;
-      console.log(region);
-      if(region === 'verde valley'){
-        lat = 34.7391876;
-        lng = -112.00987910000003;
-      } else if(region === 'willcox'){
-        lat = 32.2528519;
-        lng = -109.8320124;
-      } else if(region === 'sonoita'){
-        lat = 31.6795337;
-        lng = -110.65535940000001;
+      // $scope.vineyards = reply.data;
+      if($scope.query.foodPairing === true){
+        $scope.vineyards = reply.data.filter(function(vineyard){
+          if(vineyard.foodPairing === true){
+            return true;
+          }else{
+            return false;
+          }
+        });
+      }else if($scope.query.tastingRoom === true){
+        $scope.vineyards = reply.data.filter(function(vineyard){
+          if(vineyard.tastingRoom === true){
+            return true;
+          }else{
+            return false;
+          }
+        });
+      }else if($scope.query.tastingRoom === undefined && $scope.query.foodPairing === undefined){
+        $scope.vineyards = reply.data;
       }
+      var lat = getMeanLat($scope.vineyards);
+      var lng = getMeanLng($scope.vineyards)
       map = Map.create('#map', lat, lng, 10);
       addMarkers();
       $scope.areaSearch = false;
       $scope.mapHide = false;
+      $scope.region = '';
     });
   };
+  function getMeanLng(vineyards){
+    return (vineyards.reduce(function(prev, curr){
+      return prev + curr.geo[0];
+    }, 0) / vineyards.length);
+  }
+  function getMeanLat(vineyards){
+    return vineyards.reduce(function(prev, curr){
+      return prev + curr.geo[1];
+    }, 0)/ vineyards.length;
+  }
   $scope.search = function(city, distance){
     Map.geocode(city, function(results){
       var x = results[0].geometry.location.F;
@@ -41,6 +60,7 @@ angular.module('PickYourVine')
         addMarkers();
         $scope.areaSearch = false;
         $scope.mapHide = false;
+        $scope.city = '';
       });
     });
   };

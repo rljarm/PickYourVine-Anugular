@@ -50,7 +50,6 @@ angular.module('PickYourVine')
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
         $scope.vineyard.geo = [lng, lat];
-        $scope.vineyards.wines = $scope.vineyards.wines.split(', ');
         Vineyard.add(vineyard)
     .then(function(reply){
       console.log('!?!?!?!?!?!', reply);

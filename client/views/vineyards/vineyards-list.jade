@@ -1,17 +1,17 @@
 .row
   .col-xs-12.col-md-6.col-md-offset-3
-    h3 Welecome to Pick Your Vine.
-.row
+    h3#header.list Welecome to Pick Your Vine.
+.row.list
   .col-xs-12.col-md-1
   .col-xs-12.col-md-3
-    .form-group
+    .form-group.list
       label(for='tastingRoom') Tasting Room On Site?
       input.form-control(type='checkbox', name='tastingRoom', ng-model='query.tastingRoom')
-    .form-group
+    .form-group.list
       label(for='foodPairing') Food Pairing?
       input.form-control(type='checkbox', name='foodPairing', ng-model='query.foodPairing')
   .col-xs-12.col-md-3
-    .form-group
+    .form-group.list
       label(for='city') Search Near City/Address
       input.form-control(type='text', name='city', ng-model='city', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
       label(for='distance') Maximum Distance
@@ -27,18 +27,18 @@
         option(value='45') 45 Miles
         option(value='50') 50 Miles
     .form-group
-      button.btn.btn-info(ng-click='search(city, distance)') Search
+      button.btn.btn-info(ng-click='search(city, distance, query)') Search
   .col-xs-12.col-md-3
-    .form-group
+    .form-group.list
       label(for='region') Search by Region
       input.form-control(name="region", type='text', ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null')
     .form-group
-      button.btn.btn-info(ng-click='searchRegion(region)') Search
+      button.btn.btn-info(ng-click='searchRegion(region, query)') Search
 
-.row
+.row#list
   .col-md-12.col-md-3
     .table-responsive
-      table.table.table-hover(ng-if='vineyards !== undefined')
+      table.table.table-hover.list(ng-if='vineyards !== undefined')
         thead
           tr
             th(ng-click='sort("firstName")') Name
@@ -94,7 +94,7 @@
                 h4 Reviews:
                 h5 {{yelp.snippet_text}}
                 p: a(href='{{yelp.url}}') See Yelp For More Reviews
-    .col-xs-12.col-md-2(ng-show='mapHide')
+    .col-xs-12.col-md-1(ng-show='mapHide')
       &nbsp;
       ins.bookingaff(data-aid='830134', data-target_aid='830128', data-prod='nsb', data-width='265', data-height='360')
         // Anything inside will go away once widget is loaded.
