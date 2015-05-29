@@ -6,10 +6,7 @@ H1 New Vineyard
       input.form-control(type='text', name='name', ng-model='vineyard.name')
     .form-group
       label(for='name') Vineyard Region
-      select.form-control(name='region', ng-model='vineyard.region')
-        option(value='verde valley') Verde Valley
-        option(value='sonoita') Sonoita
-        option(value='willcox') Willcox-SouthEastern Arizona
+      input.form-control(type='text', name='region', ng-model='vineyard.region')
     .form-group
       label(for='street') Street Address
       input.form-control(type='text', name='street', ng-model='vineyard.street')
@@ -26,8 +23,20 @@ H1 New Vineyard
       label(for='phone') Phone
       input.form-control(type='tel', name='phone', ng-model='vineyard.phone')
     .form-group
-      label(for='phone') Wines
+      label(for='phone') Wines/Varietals
       textarea.form-control(name='wines', ng-model='vineyard.wines')
+    .form-group
+      label(for='tastingRoom') Tasting Room On Site?
+      input.form-control(type='checkbox', name='tastingRoom', ng-model='vineyard.tastingRoom')
+    .form-group
+      label(for='foodPairing') Food Pairing?
+      input.form-control(type='checkbox', name='foodPairing', ng-model='vineyard.foodPairing')
+    .form-group
+      label(for='yearOpened') Year Opened
+      input.form-control(type='text', name='yearOpened', ng-model='vineyard.yearOpened')
+    .form-group
+      label(for='flightCost') Cost Of Flight/Tasing
+      input.form-control(type='text', name='flightCost', ng-model='vineyard.flightCost')
     .form-group
       label(for='website') Website
       input.form-control(type='text', name='website', ng-model='vineyard.website')
