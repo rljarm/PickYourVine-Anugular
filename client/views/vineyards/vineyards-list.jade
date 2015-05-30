@@ -71,8 +71,12 @@
               h5 {{vineyard.addrString}}
               h4 Phone Number
               h5 {{vineyard.phone}}
-              h4 Tasting Room on Site?
-              h5 {{vineyard.tastingRoom}}
+              h4(ng-if='vineyard.tastingRoom') Tasting Room on Vineyard Site?
+              h5(ng-if='vineyard.tastingRoom') {{vineyard.tastingRoom}}
+              h4(ng-if='vineyard.foodPairing') Food Pairing Offered?
+              h5(ng-if='vineyard.foodPairing') {{vineyard.foodPairing}}
+              h4(ng-if='vineyard.wines') Wines
+              h5(ng-if='vineyard.wines') {{vineyard.wines}}
               h4(ng-if='vineyard.website')
               h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
   .col-xs-12.col-md-5

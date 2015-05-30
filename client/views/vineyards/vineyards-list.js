@@ -55,7 +55,6 @@ angular.module('PickYourVine')
         console.log(response.data);
         if($scope.foodPairing){
           $scope.vineyards = response.data.filter(function(vineyard){
-            console.log('vineyard', vineyard);
             if(vineyard.foodPairing){
               return vineyard;
             }
@@ -69,7 +68,6 @@ angular.module('PickYourVine')
         }else{
           $scope.vineyards = response.data;
         }
-        console.log(x, y);
         map = Map.create('#map', y, x, 10);
         addMarkers();
         $scope.areaSearch = false;
@@ -85,7 +83,6 @@ angular.module('PickYourVine')
   };
 
   function addMarkers(){
-    // clearMarkers();
     markers = $scope.vineyards.map(function(s){
       s.marker = Map.addMarker(map, s.geo[1], s.geo[0], s.name, '/assets/wine2.png');
     });
@@ -109,17 +106,15 @@ angular.module('PickYourVine')
       });
     });
   };
-  $scope.openVineyard = function(marker){
-    console.log('marker', marker);
-  };
 
   var marker;
-  function addMarker(vinyard){
-    marker = Map.addMarker(map, vinyard.geo[1], vinyard.geo[0], vinyard.name, '/assets/wine2.png');
+  function addMarker(vineyard){
+    marker = Map.addMarker(map, vineyard.geo[1], vineyard.geo[0], vineyard.name, '/assets/wine2.png');
   }
 
   $scope.vineyardGo = function(index){
     $scope.vineyard = $scope.vineyards[index];
+    $scope.vineyard.wines = $scope.vineyard.wines.join(' ');
     console.log($scope.vineyard);
     $scope.mapHide = true;
     var x = $scope.vineyard.geo[0];
