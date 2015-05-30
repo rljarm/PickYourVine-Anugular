@@ -13,14 +13,14 @@ angular.module('PickYourVine')
       if($scope.foodPairing){
         $scope.vineyards = reply.data.filter(function(vineyard){
           console.log('vineyard', vineyard);
-          if(vineyard.foodPairing === true){
-            return true;
+          if(vineyard.foodPairing){
+            return vineyard;
           }
         });
       }else if($scope.tastingRoom){
         $scope.vineyards = reply.data.filter(function(vineyard){
-          if(vineyard.tastingRoom === true){
-            return true;
+          if(vineyard.tastingRoom){
+            return vineyard;
           }
         });
       }else{
