@@ -8,7 +8,7 @@ nav.navbar.navbar-inverse(ng-controller='NavCtrl')
         span.icon-bar
       a.navbar-brand.nav(href='/')  Pick Your Vine
     #navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right(ng-show='activeUser')
+      ul.nav.navbar-nav.navbar-right(ng-if='activeUser')
         li.nav: a.nav(ui-sref='home'): i.fa.fa.fa-home &nbsp; Home
         li.nav: a.nav(ui-sref='vineyards.new'): i.fa.fa.fa-home &nbsp; New Vineyard
         li.nav: a.nav(ui-sref='vineyards.list'): i.fa.fa.fa-home &nbsp; Vineyards

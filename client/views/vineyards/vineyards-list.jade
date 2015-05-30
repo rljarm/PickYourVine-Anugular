@@ -6,10 +6,10 @@
   .col-xs-12.col-md-3
     .form-group.list
       label(for='tastingRoom') Tasting Room On Site?
-      input.form-control(type='checkbox', name='tastingRoom', ng-model='query.tastingRoom')
+      input.form-control(type='checkbox', name='tastingRoom', ng-model='tastingRoom', value='true')
     .form-group.list
       label(for='foodPairing') Food Pairing?
-      input.form-control(type='checkbox', name='foodPairing', ng-model='query.foodPairing')
+      input.form-control(type='checkbox', name='foodPairing', ng-model='foodPairing', value='true')
   .col-xs-12.col-md-3
     .form-group.list
       label(for='city') Search Near City/Address
@@ -37,7 +37,7 @@
 
 .row#list
   .col-md-12.col-md-3
-    .table-responsive
+    .table-responsive#table
       table.table.table-hover.list(ng-if='vineyards !== undefined')
         thead
           tr
@@ -56,10 +56,6 @@
   .col-md-12.col-md-8(ng-hide='mapHide')
     &nbsp;
     #map
-  .col-xs-12.col-md-4
-    &nbsp;
-    #detailMap(ng-show='mapHide', events="map.events")
-  .clearfix.visible-xs-block
   .col-xs-12.col-md-3(ng-show='mapHide')
     &nbsp;
     .panel
@@ -79,6 +75,9 @@
               h5 {{vineyard.tastingRoom}}
               h4(ng-if='vineyard.website')
               h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
+  .col-xs-12.col-md-5
+    &nbsp;
+    #detailMap(ng-show='mapHide', events="map.events")
   .row
     .col-xs-12.col-md-3(ng-show='mapHide')
       &nbsp;

@@ -2,31 +2,28 @@
 
 angular.module('PickYourVine')
 .controller('VineyardsListCtrl', function($scope, $state, Vineyard, $window, Map){
+
   var map;
   var markers = [];
   $scope.mapHide = false;
   $scope.areaSearch = true;
-  $scope.searchRegion = function(region){
+  $scope.searchRegion = function(region, query){
     Vineyard.regionSearch(region)
     .then(function(reply){
-      // $scope.vineyards = reply.data;
-      if($scope.query.foodPairing === true){
+      if($scope.foodPairing){
         $scope.vineyards = reply.data.filter(function(vineyard){
+          console.log('vineyard', vineyard);
           if(vineyard.foodPairing === true){
             return true;
-          }else{
-            return false;
           }
         });
-      }else if($scope.query.tastingRoom === true){
+      }else if($scope.tastingRoom){
         $scope.vineyards = reply.data.filter(function(vineyard){
           if(vineyard.tastingRoom === true){
             return true;
-          }else{
-            return false;
           }
         });
-      }else if($scope.query.tastingRoom === undefined && $scope.query.foodPairing === undefined){
+      }else{
         $scope.vineyards = reply.data;
       }
       var lat = getMeanLat($scope.vineyards);
@@ -46,7 +43,7 @@ angular.module('PickYourVine')
   function getMeanLat(vineyards){
     return vineyards.reduce(function(prev, curr){
       return prev + curr.geo[1];
-    }, 0)/ vineyards.length;
+    }, 0) / vineyards.length;
   }
   $scope.search = function(city, distance){
     Map.geocode(city, function(results){
@@ -55,7 +52,24 @@ angular.module('PickYourVine')
       var dist = distance;
       Vineyard.findGeo(x, y, dist)
       .then(function(response){
-        $scope.vineyards = response.data;
+        console.log(response.data);
+        if($scope.foodPairing){
+          $scope.vineyards = response.data.filter(function(vineyard){
+            console.log('vineyard', vineyard);
+            if(vineyard.foodPairing){
+              return vineyard;
+            }
+          });
+        }else if($scope.tastingRoom){
+          $scope.vineyards = response.data.filter(function(vineyard){
+            if(vineyard.tastingRoom){
+              return vineyard;
+            }
+          });
+        }else{
+          $scope.vineyards = response.data;
+        }
+        console.log(x, y);
         map = Map.create('#map', y, x, 10);
         addMarkers();
         $scope.areaSearch = false;
@@ -99,6 +113,11 @@ angular.module('PickYourVine')
     console.log('marker', marker);
   };
 
+  var marker;
+  function addMarker(vinyard){
+    marker = Map.addMarker(map, vinyard.geo[1], vinyard.geo[0], vinyard.name, '/assets/wine2.png');
+  }
+
   $scope.vineyardGo = function(index){
     $scope.vineyard = $scope.vineyards[index];
     console.log($scope.vineyard);
@@ -108,7 +127,7 @@ angular.module('PickYourVine')
     Vineyard.getYelp($scope.vineyard.addrString, $scope.vineyard.name)
     .then(function(reply){
       map = Map.create('#detailMap', y, x, 14);
-      addMarkers();
+      addMarker($scope.vineyard);
       $window.google.maps.event.trigger(map, 'resize');
       console.log('yelp', reply);
       $scope.yelp = reply.data.businesses[0];
