@@ -50,6 +50,7 @@ angular.module('PickYourVine')
       var x = results[0].geometry.location.F;
       var y = results[0].geometry.location.A;
       var dist = distance;
+      map = Map.create('#map', y, x, 10);
       Vineyard.findGeo(x, y, dist)
       .then(function(response){
         console.log(response.data);
@@ -68,7 +69,7 @@ angular.module('PickYourVine')
         }else{
           $scope.vineyards = response.data;
         }
-        map = Map.create('#map', y, x, 10);
+
         addMarkers();
         $scope.areaSearch = false;
         $scope.mapHide = false;
