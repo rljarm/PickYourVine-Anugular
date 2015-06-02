@@ -38,16 +38,21 @@ angular.module('PickYourVine')
     address.push($scope.vineyard.state);
     address.push($scope.vineyard.zip);
     address = address.join(', ');
+    if($scope.vineyard.tastingRoom === undefined){
+      $scope.vineyard.tastingRoom = false;
+    }
+    if($scope.vineyard.foodPairing === undefined){
+      $scope.vineyard.foodPairing = false;
+    }
     Map.geocode(address, function(results){
-      console.log('Inside Map.geocode --> results:', results);
       if(results && results.length){
         $scope.vineyard.addrString = results[0].formatted_address;
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
         $scope.vineyard.geo = [lng, lat];
-        console.log(vineyard);
         Vineyard.add(vineyard)
-    .then(function(){
+    .then(function(reply){
+      console.log('!?!?!?!?!?!', reply);
       $state.go('vineyards.list');
     });
       }

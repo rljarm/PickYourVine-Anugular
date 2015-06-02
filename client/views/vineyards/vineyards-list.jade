@@ -1,12 +1,18 @@
 .row
-  .col-xs-12.col-sm-4.col-sm-offset-4
-    h3 Welecome to Pick Your Vine.
-    button.btn.btn-info(ng-if='areaSearch === false', ng-click='toggleSearch()') Search Region/Distance
-    &nbsp;
-.row
-  .col-xs-12.col-sm-3(ng-if='areaSearch === true')
-    h4 Vineyard search
-    .form-group
+  .col-xs-12.col-md-6.col-md-offset-2
+    h2#header.list: img#welcome(src='/assets/PickYourVineWelcome.png')
+  .col-xs-12.col-md-4: img#logo(src='/assets/PickYourVineLogo.png')
+.row.list
+  .col-xs-12.col-md-1
+  .col-xs-12.col-md-3
+    .form-group.list
+      label(for='tastingRoom') Tasting Room On Site?
+      input.form-control(type='checkbox', name='tastingRoom', ng-model='tastingRoom', value='true')
+    .form-group.list
+      label(for='foodPairing') Food Pairing?
+      input.form-control(type='checkbox', name='foodPairing', ng-model='foodPairing', value='true')
+  .col-xs-12.col-md-3
+    .form-group.list
       label(for='city') Search Near City/Address
       input.form-control(type='text', name='city', ng-model='city', ng-keyup='$event.keyCode == 13 ? search(city, distance) : null')
       label(for='distance') Maximum Distance
@@ -22,71 +28,71 @@
         option(value='45') 45 Miles
         option(value='50') 50 Miles
     .form-group
-      button.btn.btn-info(ng-click='search(city, distance)') Search
-    .form-group
+      button.btn.btn-info(ng-click='search(city, distance, query)') Search
+  .col-xs-12.col-md-3
+    .form-group.list
       label(for='region') Search by Region
-      select.form-control(name="region")(ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null') Region
-        option(value='verde valley') Verde Valley
-        option(value='sonoita') Sonoita
-        option(value='willcox') Willcox-SouthEastern Arizona
+      input.form-control(name="region", type='text', ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null')
     .form-group
-      button.btn.btn-info(ng-click='searchRegion(region)') Search
+      button.btn.btn-info(ng-click='searchRegion(region, query)') Search
 
-.row
-  .col-sm-12.col-sm-3
-    .table-responsive
-      table.table.table-hover(ng-if='vineyards !== undefined')
+.row#list
+  .col-md-12.col-md-3
+    .table-responsive#table
+      table.table.table-hover.list(ng-if='vineyards !== undefined')
         thead
           tr
             th(ng-click='sort("firstName")') Name
             th(ng-click='sort("company")') Region
             th(ng-if='', ng-click='sort("role")') Distance
-            th Edit
-            th Delete
+            th(ng-if='activeUser') Edit
+            th(ng-if='activeUser') Delete
         tbody
           tr(ng-repeat='vineyard in vineyards track by $index | orderBy : sortColumn : sortReverse', ng-mouseenter='toggleBounce(vineyard)', ng-mouseleave='toggleBounce(vineyard)')
             td(ng-click='vineyardGo($index)') {{vineyard.name}}
             td(ng-click='vineyardGo($index)') {{vineyard.region}}
             td(ng-click='vineyardGo($index)', ng-if='') {{vineyard.distance}}
-            td: button.btn.btn-sm.btn-warning(ng-click='editVineyard(vineyard)') Edit
-            td: button.btn.btn-sm.btn-danger(ng-click='deleteVineyard(vineyard)') Delete
-  .col-sm-12.col-sm-8(ng-hide='mapHide')
+            td(ng-if='activeUser'): button.btn.btn-md.btn-warning(ng-click='editVineyard(vineyard)') Edit
+            td(ng-if='activeUser'): button.btn.btn-md.btn-danger(ng-click='deleteVineyard(vineyard)') Delete
+  .col-md-12.col-md-8(ng-hide='mapHide')
     &nbsp;
     #map
-  .col-xs-12.col-sm-3(ng-show='mapHide')
+  .col-xs-12.col-md-3(ng-show='mapHide')
     &nbsp;
-    .panel
-      .panel-default
-        .panel-heading
-          .panel-title
-            h3 {{vineyard.name}}
+    .panel.vinyard
+      .panel-default.vinyard
+        .panel-heading.vinyard#vinyardHeading
+          .panel-title.vinyard#vineyardTitle
+            h3#vinyardName {{vineyard.name}}
             h4(ng-if='') Distance: {{}}
-            .panel-body
+            .panel-body.vinyard
               h4 Region:
               h5 {{vineyard.region | uppercase}}
               h4 Address:
               h5 {{vineyard.addrString}}
               h4 Phone Number
               h5 {{vineyard.phone}}
+              h4(ng-if='vineyard.tastingRoom') Tasting Room on Vineyard Site?
+              h5(ng-if='vineyard.tastingRoom') {{vineyard.tastingRoom}}
+              h4(ng-if='vineyard.foodPairing') Food Pairing Offered?
+              h5(ng-if='vineyard.foodPairing') {{vineyard.foodPairing}}
+              h4(ng-if='vineyard.wines') Wines
+              h5(ng-if='vineyard.wines') {{vineyard.wines}}
               h4(ng-if='vineyard.website')
               h5: a(target='_blank', href='http://{{vineyard.website}}') {{vineyard.website}}
-  .col-xs-12.col-sm-3(ng-show='mapHide')
-    &nbsp;
-    .panel
-      .panel-default
-        .panel-heading
-          .panel-title
-          h3 Yelp
-            .panel-body
+              h3 Yelp
               h4 Rating:
               h5 {{yelp.rating}}
               img(ng-src='{{yelp.rating_img_url_large}}')
               h4 Reviews:
               h5 {{yelp.snippet_text}}
               p: a(href='{{yelp.url}}') See Yelp For More Reviews
-  .col-xs-12.col-sm-2(ng-show='mapHide')
+  .col-xs-12.col-md-3
     &nbsp;
-    ins.bookingaff(data-aid='830134', data-target_aid='830128', data-prod='nsb', data-width='265', data-height='360')
+    #detailMap(ng-show='mapHide', events="map.events")   
+  .col-xs-12.col-md-1(ng-show='mapHide')
+      &nbsp;
+      ins.bookingaff(data-aid='830134', data-target_aid='830128', data-prod='nsb', data-width='265', data-height='360')
       // Anything inside will go away once widget is loaded.
       a(href='//www.booking.com?aid=830128') Booking.com
     script(type='text/javascript').
@@ -97,12 +103,10 @@
       s.src = u + '?v=' + (+new Date());
       p.parentNode.insertBefore(s,p);
       })(document, 'script', '//aff.bstatic.com/static/affiliate_base/js/flexiproduct.js');
-  .row
-    .col-xs-12.col-sm-4
-      #detailMap(ng-show='mapHide', events="map.events")
-  .row
-    .col-xs-1
-      button.btn.btn-info(ng-show='moveBack', ng-click='changePage("prev")') Prev
-    .col-xs-10
-    .col-xs-1
-      button.btn.btn-info(ng-show='moveForward', ng-click='changePage("next")') Next
+
+.row
+  .col-xs-1
+    button.btn.btn-info(ng-show='moveBack', ng-click='changePage("prev")') Prev
+  .col-xs-10
+  .col-xs-1
+    button.btn.btn-info(ng-show='moveForward', ng-click='changePage("next")') Next

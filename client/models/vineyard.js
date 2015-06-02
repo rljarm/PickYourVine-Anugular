@@ -15,7 +15,7 @@ angular.module('PickYourVine')
   Vineyard.find = function(){
     return $http.get(nodeUrl + '/vineyards');
   };
-  Vineyard.deleteHotel = function(vineyard){
+  Vineyard.deleteVineyard = function(vineyard){
     return $http.delete(nodeUrl + '/vineyards/' + vineyard._id);
   };
   Vineyard.findOne = function(vineyardId){
