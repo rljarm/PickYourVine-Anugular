@@ -1,3 +1,9 @@
+body {
+  background-image: url('/assets/vineyard.jpg');
+  background-repeat: repeat-x;
+  background-color: #4E000C;
+}
+
 #map {
   height: 47em;
   width: 62em;
@@ -23,7 +29,9 @@
 }
 
 .list{
-  color: #980118;
+  background-color: rgba(255, 255, 255, .75);
+  padding: 15px;
+  border-radius: 30px;
 }
 #header{
   font-weight: bold;
@@ -37,8 +45,11 @@
   color: #980118;
 }
 #table {
-  min-height: 50em;
+  height: 50em;
   border-color: #980118;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 10px;
+  overflow: scroll;
 }
 #vinyardHeading{
   background-color: #980118;
@@ -54,4 +65,13 @@
   height: 10em;
   width: 10em;
   margin-left: 10px;
+}
+#rating {
+  min-height: 30px;
+  width: 50px;
+}
+
+.button {
+  border-radius: 15px;
+  background-color: #B7132D;
 }

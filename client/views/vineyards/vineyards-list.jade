@@ -1,8 +1,8 @@
 .row
+  .col-xs-12.col-md-4.col-md-offset-7
+    h3: img#logo(src='/assets/PickYourVineLogo.png')
   .col-xs-12.col-md-6.col-md-offset-2
-    h2#header.list: img#welcome(src='/assets/PickYourVineWelcome.png')
-  .col-xs-12.col-md-4: img#logo(src='/assets/PickYourVineLogo.png')
-.row.list
+.row
   .col-xs-12.col-md-1
   .col-xs-12.col-md-3
     .form-group.list
@@ -28,18 +28,18 @@
         option(value='45') 45 Miles
         option(value='50') 50 Miles
     .form-group
-      button.btn.btn-info(ng-click='search(city, distance, query)') Search
+      button.btn.btn-danger.button(ng-click='search(city, distance, query)') Search
   .col-xs-12.col-md-3
     .form-group.list
       label(for='region') Search by Region
       input.form-control(name="region", type='text', ng-model='region', ng-keyup='$event.keyCode == 13 ? searchRegion(region) : null')
     .form-group
-      button.btn.btn-info(ng-click='searchRegion(region, query)') Search
+      button.btn.btn-danger.button(ng-click='searchRegion(region, query)') Search
 
 .row#list
   .col-md-12.col-md-3
-    .table-responsive#table
-      table.table.table-hover.list(ng-if='vineyards !== undefined')
+    .table-responsive#table(ng-if='vineyards !== undefined')
+      table.table.table-hover.list
         thead
           tr
             th(ng-click='sort("firstName")') Name
