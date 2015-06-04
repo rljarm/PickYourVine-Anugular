@@ -1,7 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
 body {
-  background-image: url('/assets/vineyard.jpg');
-  background-repeat: repeat-x;
+/*   background-image: url('/assets/vineyard.jpg');
+background-repeat: repeat-x; */
   background-color: #4E000C;
+  font-family: PT Sans;
 }
 
 #map {
@@ -45,7 +47,7 @@ body {
   color: #980118;
 }
 #table {
-  height: 50em;
+  max-height: 50em;
   border-color: #980118;
   background-color: rgba(255, 255, 255, .75);
   border-radius: 10px;
@@ -74,4 +76,57 @@ body {
 .button {
   border-radius: 15px;
   background-color: #B7132D;
+}
+#bio {
+  text-align: center;
+  background-color: rgba(255, 255, 255, .75);
+  padding: 15px;
+  border-radius: 30px;
+  color: black;
+  width: 37em;
+}
+#bioImg {
+  height: 40em;
+  width: auto;
+}
+
+.bio {
+  color: black;
+}
+
+#hero {
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+.hero {
+  font-weight: bold;
+  color: black;
+}
+.contact-container {
+  background-image: url('/assets/vineyard.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  .contact-wrap {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.no-padding{
+  padding: 0;
+}
+.navbar {
+  margin: 0;
+}
+ table {
+   border: 2px soild #980118;
+ }
+
+.map {
+  border-radius: 10px;
 }
