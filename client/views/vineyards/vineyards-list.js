@@ -50,6 +50,9 @@ angular.module('PickYourVine')
       var x = results[0].geometry.location.F;
       var y = results[0].geometry.location.A;
       var dist = distance;
+      if(!dist){
+        dist = 15;
+      }
       map = Map.create('#map', y, x, 10);
       Vineyard.findGeo(x, y, dist)
       .then(function(response){
@@ -115,7 +118,7 @@ angular.module('PickYourVine')
 
   $scope.vineyardGo = function(index){
     $scope.vineyard = $scope.vineyards[index];
-    $scope.vineyard.wines = $scope.vineyard.wines.join(' ');
+    $scope.vineyard.wines = $scope.vineyard.wines.join('');
     console.log($scope.vineyard);
     $scope.mapHide = true;
     var x = $scope.vineyard.geo[0];
@@ -127,6 +130,39 @@ angular.module('PickYourVine')
       $window.google.maps.event.trigger(map, 'resize');
       console.log('yelp', reply);
       $scope.yelp = reply.data.businesses[0];
+      console.log(reply.data.businesses[0].rating);
+      switch($scope.yelp.rating){
+        case '.5':
+        $scope.yelp.img = '/assets/halfStar.png';
+          break;
+        case '1':
+        $scope.yelp.img = '/assets/oneStar.png';
+          break;
+        case '1.5':
+        $scope.yelp.img = '/assets/1.5stars.png';
+          break;
+        case '2':
+        $scope.yelp.img = '/assets/twoStar.png';
+          break;
+        case '2.5':
+        $scope.yelp.img = '/assets/2.5star.png';
+          break;
+        case '3':
+        $scope.yelp.img = '/assets/threeStars.png';
+          break;
+        case '3.5':
+        $scope.yelp.img = '/assets/3.5stars.png';
+          break;
+        case '4':
+        $scope.yelp.img = '/assets/fourStars.png';
+          break;
+        case '4.5':
+        $scope.yelp.img = '/assets/4.5star.png';
+          break;
+        case '5':
+        $scope.yelp.img = '/assets/fiveStar.png';
+
+      }
     });
   };
 });
